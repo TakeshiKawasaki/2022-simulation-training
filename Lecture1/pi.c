@@ -16,8 +16,9 @@ int main(void){
     z = x*x + y*y;
     if(z<1) count++; }
     pi = (double)count / max * 4;
-    printf("%.20f¥n",pi); //by C, %.20f -- Display with 20 decimal precision                                                                           
-    cout<< std::setprecision(21)  <<  pi  << endl; // by C++                                                
+    printf("%.20f\n",pi); //by C, %.20f -- Display with 20 decimal precision                                                    \
+                                                                                                                                 
+    cout<< std::setprecision(21)  <<  pi  << endl; // by C++                                                                     
     return 0;
 }
 
