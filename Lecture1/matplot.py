@@ -1,6 +1,7 @@
-%matplotlib inline
 import matplotlib.pyplot as plt
-
+%matplotlib inline
+# グラフの解像度が上がる
+%config InlineBackend.figure_format = 'retina'
 price = [100, 250, 380, 500, 700]
 number = [1, 2, 3, 4, 5]
 
