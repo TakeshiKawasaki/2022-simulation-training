@@ -1,7 +1,8 @@
 #include <stdio.h> // for printf, etc                                                                                                                                       
 #include <stdlib.h> // for rand(), etc                                                                                                                                      
 #include <math.h> // for sin(),cos(), etc                                                                                                                                   
-#include <iostream>// for cout, etc                                                                                                                                         
+#include <iostream>// for cout, etc 
+#include <iomanip>// for setprecision()
 #include <fstream> // for ifstream/ofstream                                                                                                                                 
 #include <time.h>// for time(NULL), etc                                                                                                                                     
 using namespace std;
