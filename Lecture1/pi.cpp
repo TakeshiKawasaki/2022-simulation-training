@@ -23,6 +23,7 @@ int main(void){
       file << x <<" "<<y <<endl;
     }
   }
+    file.close();
     pi = (double)count / max * 4;
     printf("%.20f\n",pi); //by C, %.20f -- Displaying with 20 decimal precision                                                                                             
     cout<< std::setprecision(21)  <<  pi  << endl; // by C++                                                                                                                
