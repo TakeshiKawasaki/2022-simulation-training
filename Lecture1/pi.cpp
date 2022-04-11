@@ -26,7 +26,7 @@ int main(void){
     file.close();
     pi = (double)count / max * 4;
     printf("%.20f\n",pi); //by C, %.20f -- Displaying with 20 decimal precision                                                                                             
-    cout<< std::setprecision(21)  <<  pi  << endl; // by C++                                                                                                                
+    cout<< setprecision(21)  <<  pi  << endl; // by C++                                                                                                                
     //std::cout << std::setprecision(21)  <<  pi  << endl; // without "using namespace std;"                                                                                
     return 0;
 }
