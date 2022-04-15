@@ -5,3 +5,6 @@
 第1回講義で用いるサンプルプログラムは
 TakeshiKawasaki/2022-simulation-training/Lecture1
 におきました．講義が進むにつれデータをアップデートさせます．
+第２回講義で用いるサンプルプログラムを
+TakeshiKawasaki/2022-simulation-training/Lecture2
+におきました．今回はjupyiter notebookファイルも掲載しました．
