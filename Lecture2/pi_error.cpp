@@ -8,6 +8,8 @@
 #include "MT.h"// for MT
 
 
+
+
 using namespace std;
 int main(void){
   int i, count = 0, max = 1e+9, out=1e+2;
