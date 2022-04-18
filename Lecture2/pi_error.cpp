@@ -9,8 +9,8 @@
 
 using namespace std;
 int main(void){
-  int i, count = 0, max = 1e+9, out=1e+2;
-  double x,y,z,pi;
+  int i, count = 0, max = 1e+9;
+  double x,y,z,pi, out=1.e+2; //corrected 4/17
   char fname[128];
   ofstream file;
   srand(time(NULL));
