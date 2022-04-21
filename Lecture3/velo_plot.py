@@ -9,7 +9,7 @@ fig = plt.figure(figsize=(8,8))
 
 plt.subplot(111)
 ax1 = fig.add_subplot(111)
-symbol =['o','D','x','>']
+symbol =['o-','D-','x-','>-']
 dt=[0.0001,0.0010,0.0100,0.1000]
 
 
