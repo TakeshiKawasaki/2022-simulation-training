@@ -9,11 +9,14 @@ fig = plt.figure(figsize=(8,8))
 
 plt.subplot(111)
 ax1 = fig.add_subplot(111)
-
+symbol =['o','D','x','>']
 dt=[0.0001,0.0010,0.0100,0.1000]
+
+
 for i in range (0,4): 
+    print(i,symbol[i],dt[i])  # for check on the arrays
     time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_{:.4f}.dat".format(dt[i]), comments='#', unpack=True)
-    plt.plot(time,vel, "o-",markersize=10,color=cm.jet((i+0.5)/4),label=r"$\Delta t/t_0={}$".format(dt[i]))
+    plt.plot(time,vel, "{}".format(symbol[i]) ,markersize=10,color=cm.jet(i/4),label=r"$\Delta t/t_0={}$".format(dt[i]))
     
 plt.yscale('log')
 
@@ -21,7 +24,7 @@ plt.yscale('log')
 time= np.linspace(1e-4, 4e1, 1000) 
 vel= 10.*np.exp(-time)
 plt.plot(time,vel, "--",markersize=3,linewidth = 2.0, color="k",label=r"$10\exp{(-t/t_0)}$")
-
+#########
 
 #図の書式設定
 plt.tick_params(which='major',width = 1, length = 10)
