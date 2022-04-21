@@ -7,27 +7,22 @@ import numpy as np
 plt.rcParams["text.usetex"] =True 
 fig = plt.figure(figsize=(8,8))
 
- ###1つめ########################
 plt.subplot(111)
 ax1 = fig.add_subplot(111)
-#各自ファイルのパスを変えること
 
-time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_0.0001.dat", comments='#', unpack=True)
-plt.plot(time,vel, "o-",markersize=10,color=cm.jet(0.5/4),label=r"$\Delta t/t_0=10^{-4}$")
-time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_0.0010.dat", comments='#', unpack=True)
-plt.plot(time,vel, "D-",markersize=10,color=cm.jet(1.5/4),label=r"$\Delta t/t_0=10^{-3}$")
-time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_0.0100.dat", comments='#', unpack=True)
-plt.plot(time,vel, "x-",markersize=10,color=cm.jet(3.0/4),label=r"$\Delta t/t_0=10^{-2}$")
-time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_0.1000.dat", comments='#', unpack=True)
-plt.plot(time,vel, "s-",markersize=10,color=cm.jet(3.5/4),label=r"$\Delta t/t_0=10^{-1}$")
-
+dt=[0.0001,0.0010,0.0100,0.1000]
+for i in range (0,4): 
+    time,vel= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture3/velo_{:.4f}.dat".format(dt[i]), comments='#', unpack=True)
+    plt.plot(time,vel, "o-",markersize=10,color=cm.jet((i+0.5)/4),label=r"$\Delta t/t_0={}$".format(dt[i]))
+    
 plt.yscale('log')
 
 ###Drawing a line ######
 time= np.linspace(1e-4, 4e1, 1000) 
 vel= 10.*np.exp(-time)
 plt.plot(time,vel, "--",markersize=3,linewidth = 2.0, color="k",label=r"$10\exp{(-t/t_0)}$")
-#########
+
+
 #図の書式設定
 plt.tick_params(which='major',width = 1, length = 10)
 plt.tick_params(which='minor',width = 1, length = 5)
