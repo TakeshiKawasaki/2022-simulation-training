@@ -9,3 +9,6 @@ TakeshiKawasaki/2022-simulation-training/Lecture1
 第２回講義で用いるサンプルプログラムを
 TakeshiKawasaki/2022-simulation-training/Lecture2
 におきました．今回はjupyiter notebookファイルも掲載しました．
+
+第3回講義で用いるサンプルプログラムを 
+TakeshiKawasaki/2022-simulation-training/Lecture3 におきました．
