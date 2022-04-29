@@ -6,11 +6,12 @@ import sys
 def damp(dt):
     v=10. 
     i=0 
-    out=1
+    out=1.
     f = open("damp_dt_{:.4f}.dat".format(dt), 'w')
-    while v> sys.float_info.epsilon: # numerical epsilon wherein  the "float" corresponds to the double in C 
+    while v> sys.float_info.epsilon: 
+        # numerical epsilon wherein  the "float" corresponds to the double in C 
         v -= v*dt
-        i+=1.
+        i+=1
         if(i>=out):
             print("{:.4f}  {:.20f}".format(i*dt, v))
             f.write("{:.4f}  {:.20f}\n".format(i*dt, v))
