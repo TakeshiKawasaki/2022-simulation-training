@@ -10,7 +10,7 @@
 #define hsize 1200
 //using namespace std;
 
-int histgram(double bin,double *array,double *hist){
+int histogram(double bin,double *array,double *hist){
   int i;
   char filename[128];
   std::ofstream file;
@@ -33,6 +33,6 @@ int main(){
   int i;
   for(i=0;i<asize;i++)
     array[i]=gaussian_rand();
-  histgram(bin,array,hist);
+  histogram(bin,array,hist);
   return 0;
 }
