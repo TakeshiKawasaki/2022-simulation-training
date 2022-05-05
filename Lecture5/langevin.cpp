@@ -8,7 +8,7 @@
 
 #define tmax 100
 #define dt 0.01
-#define temp 1.
+#define temp 0.01
 #define ensemble 1000
 #define dim 3
 //using namespace std;
@@ -16,8 +16,8 @@
 void ini_phase(double *x,double *v){
   int i;
   for(i=0;i<dim;i++){
-    x[i]=0;
-    v[i]=0;
+    x[i]=0.;
+    v[i]=0.;
   }
 }
 
@@ -41,7 +41,7 @@ void output(double *x,double *v,int j){
   sprintf(filename,"coord_dt%.3fT%.3f.dat",dt,temp);
   file.open(filename,std::ios::app); //append
   file <<j*dt<<"\t"<<x[0]<<"\t"<<x[1]<<"\t"<<x[2]<<std::endl;
-  std::cout<<j*dt<<"\t"<<x[0]<<"\t"<<x[1]<<"\t"<<x[2]<<std::endl;
+  //  std::cout<<j*dt<<"\t"<<x[0]<<"\t"<<x[1]<<"\t"<<x[2]<<std::endl;
   file.close();
 
   sprintf(filename,"vel_dt%.3fT%.3f.dat",dt,temp);
@@ -59,12 +59,12 @@ int main(){
     ini_clock(&j,&tout);
     output(x,v,j);
     while(j*dt < tmax){
+      j++;
       eom(v,x);
       if(j*dt >= tout){
 	output(x,v,j);
 	tout*=1.2;
       }
-      j++;
     }
   }
   return 0;
