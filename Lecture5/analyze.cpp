@@ -7,7 +7,7 @@
 #include "BM.h"
 
 #define tmax 100
-#define temp 0.01
+#define temp 1.0
 #define dt 0.01
 #define ensemble 1000
 #define window 52
@@ -32,27 +32,27 @@ void input(double (*x)[dim],double (*v)[dim],double *t){
   file.close();
 
   sprintf(filename,"vel_dt%.3fT%.3f.dat",dt,temp);
-  file.open(filename); 
+  file.open(filename);
   for(int i=0;i<asize;i++){
-    file >> t[i] >> v[0][i] >> v[1][i] >> v[2][i];
+    file >> t[i] >> v[i][0] >> v[i][1] >> v[i][2];
     // std::cout << t[i] <<"\t"<<v[0][i]<<"\t"<<v[1][i]<<"\t"<<v[2][i]<<std::endl;
   }
   file.close();
-  
+
 }
 
 void output(double *t,double *dr2,double *corr){
   char filename[128];
   std::ofstream file;
-  sprintf(filename,"msd%.3fT%.3f.dat",dt,temp);
+  sprintf(filename,"msd_dt%.3fT%.3f.dat",dt,temp);
   file.open(filename);
-  for(int i=0;i<window;i++)
+  for(int i=1;i<window;i++)
     file<<t[i]-t[0]<<"\t"<<dr2[i]<<std::endl;
   file.close();
 
   sprintf(filename,"corr_dt%.3fT%.3f.dat",dt,temp);
   file.open(filename);
-  for(int i=0;i<window;i++)
+  for(int i=1;i<window;i++)
     file<<t[i]-t[0]<<"\t"<<corr[i]<<std::endl;
   file.close();
 }
