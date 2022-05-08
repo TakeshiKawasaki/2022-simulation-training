@@ -6,10 +6,10 @@
 #include <cfloat>
 #include "BM.h"
 
-#define tmax 100
+#define tmax 10
 #define dt 0.01
-#define temp 0.01
-#define ensemble 1000
+#define temp 1.0
+#define ensemble 10000
 #define dim 3
 //using namespace std;
 
