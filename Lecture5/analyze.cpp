@@ -6,7 +6,6 @@
 #include <cfloat>
 #include "BM.h"
 
-#define tmax 100
 #define temp 0.01
 #define dt 0.01
 #define ensemble 10000
@@ -55,7 +54,7 @@ void output(double *t,double *dr2,double *corr,double integral){
   for(int i=1;i<window;i++)
     file<<t[i]-t[0]<<"\t"<<corr[i]<<std::endl;
   file.close();
-  
+
   std::cout<<"A result of the integral ="<<integral<<std::endl;
 }
 
@@ -78,11 +77,13 @@ int main(){
   double t[ensemble*window],dr2[window],corr[window],integral=0.0;
   int i,j;
   double  (*x)[dim] = new double[ensemble*window][dim];
-  double  (*v)[dim] = new double[ensemble*window][dim]; 
-  
+  double  (*v)[dim] = new double[ensemble*window][dim];
+
   ini(dr2,corr);
   input(x,v,t);
   analyze(x,v,t,dr2,corr,&integral);
   output(t,dr2,corr,integral);
+  delete[] x;
+  delete[] v;
   return 0;
 }
