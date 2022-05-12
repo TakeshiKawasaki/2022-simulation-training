@@ -21,15 +21,18 @@ void setmap(int (*list)[Nn],double (*x)[dim]){
   for(int i=0;i<Np;i++){
     for(int j=0;j<Np;j++){
       if(j!=i){
-        dx=x[i][0]-x[j][0];
-        dy=x[i][1]-x[j][1];
-        if(dx>0.5*L)
-          dx-=L;
-        if(dx<-0.5*L)
-          dx+=L;
-        if(dy>0.5*L)
-          dy-=L;
-        if(dy<-0.5*L)
+	dx=x[i][0]-x[j][0];
+	dy=x[i][1]-x[j][1];
+	//	dx-=L*floor(dx/(0.5*L));
+	//	dy-=L*floor(dy/(0.5*L));
+	
+	if(dx>0.5*L)
+	  dx-=L;
+	if(dx<-0.5*L)
+	  dx+=L;
+	if(dy>0.5*L)
+	  dy-=L;
+	if(dy<-0.5*L)
 	  dy+=L;
 	
 	dr2=dx*dx+dy*dy;
