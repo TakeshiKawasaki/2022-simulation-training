@@ -17,7 +17,7 @@ import numpy as np
 
 resolution = 100 # the number of vertices
 Np=512
-
+L=40.0
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111)
 
@@ -28,13 +28,12 @@ for i in range(Np):
     circle = mpatches.Ellipse((x[i],y[i]), r[i], r[i])  # 楕円の中心座標，長軸　短軸　（今回は真円）
     patches.append(circle)
 
-L=40.0
 plt.xlim(0, L)
 plt.ylim(0, L)    
 
 colors = x
 # the color represents the value of x  
-p = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=1.0,ec='w')
+p = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=1.0,ec='k')
 p.set_array(colors)
 #####color range ####
 p.set_clim(0,L)
@@ -42,7 +41,7 @@ p.set_clim(0,L)
 ax.add_collection(p)
 
 C=plt.colorbar(p,shrink=0.6) # shirink:  controlling the size of color bar: 1.0 is maximum
-C.set_label(r"$x$", fontsize=30) # clor bar label
+C.set_label(r"$x$", fontsize=30) # color bar label
 
 ax.spines['top'].set_linewidth(3)
 ax.spines['bottom'].set_linewidth(3)
