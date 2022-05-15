@@ -6,7 +6,7 @@
 
 #define L 40.0
 #define a 1.0
-#define Np 512
+#define Np 1024
 #define Nn 100
 #define dim 2
 #define cut 5.0
@@ -23,17 +23,9 @@ void setmap(int (*list)[Nn],double (*x)[dim]){
       if(j!=i){
 	dx=x[i][0]-x[j][0];
 	dy=x[i][1]-x[j][1];
-	//	dx-=L*floor(dx/(0.5*L));
-	//	dy-=L*floor(dy/(0.5*L));
-	
-	if(dx>0.5*L)
-	  dx-=L;
-	if(dx<-0.5*L)
-	  dx+=L;
-	if(dy>0.5*L)
-	  dy-=L;
-	if(dy<-0.5*L)
-	  dy+=L;
+
+	dx-=L*floor((dx+0.5*L)/L);
+        dy-=L*floor((dy+0.5*L)/L);
 	
 	dr2=dx*dx+dy*dy;
 	if(dr2<cut*cut){
