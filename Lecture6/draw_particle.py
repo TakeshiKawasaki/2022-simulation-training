@@ -18,12 +18,13 @@ import numpy as np
 resolution = 100 # the number of vertices
 Np=512
 L=40.0
+patches = []
+
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111)
 
 x, y,r = np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture6/coord_square_L40.0N512.dat", comments='#', unpack=True)
 
-patches = []
 for i in range(Np):
     circle = mpatches.Ellipse((x[i],y[i]), r[i], r[i])  # 楕円の中心座標，長軸　短軸　（今回は真円）
     patches.append(circle)
@@ -32,7 +33,6 @@ plt.xlim(0, L)
 plt.ylim(0, L)    
 
 colors = x
-# the color represents the value of x  
 p = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=1.0,ec='k')
 p.set_array(colors)
 #####color range ####
