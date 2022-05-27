@@ -8,6 +8,7 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 ```
 を実行すると　新たに生成されるフォルダCodes以下に当リポジトリ内の全てのデータが入ります．
 
+(更新履歴)
 第1回講義で用いるサンプルプログラム等を
 TakeshiKawasaki/2022-simulation-training/Lecture1
 におきました．講義が進むにつれデータをアップデートさせます．
@@ -24,3 +25,8 @@ TakeshiKawasaki/2022-simulation-training/Lecture4 におきました．
 
 5/8: 第5回講義で用いるサンプルプログラム等を 
 TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．
+
+5/15: 第6回講義で用いるサンプルプログラム等を 
+TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．
+
+5/22: 休講
