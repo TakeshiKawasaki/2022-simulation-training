@@ -22,5 +22,5 @@ TakeshiKawasaki/2022-simulation-training/Lecture4 におきました．<br>
 5/8:<br>第5回講義で用いるサンプルプログラム等を 
 TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．<br>
 5/15:<br>第6回講義で用いるサンプルプログラム等を 
-TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．<br>
-5/22:<br>休講<br>
+TakeshiKawasaki/2022-simulation-training/Lecture6 におきました．<br>
+5/22:<br>休講についき更新なし．<br>
