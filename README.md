@@ -11,22 +11,16 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 (更新履歴)<br>
 第1回講義で用いるサンプルプログラム等を
 TakeshiKawasaki/2022-simulation-training/Lecture1
-におきました．講義が進むにつれデータをアップデートさせます．
-
+におきました．講義が進むにつれデータをアップデートさせます．<br>
 第２回講義で用いるサンプルプログラム等を
 TakeshiKawasaki/2022-simulation-training/Lecture2
-におきました．今回はjupyiter notebookファイルも掲載しました．
-
+におきました．今回はjupyiter notebookファイルも掲載しました．<br>
 第3回講義で用いるサンプルプログラム等を 
-TakeshiKawasaki/2022-simulation-training/Lecture3 におきました．
-
+TakeshiKawasaki/2022-simulation-training/Lecture3 におきました．<br>
 5/1: 第4回講義で用いるサンプルプログラム等を 
-TakeshiKawasaki/2022-simulation-training/Lecture4 におきました．
-
+TakeshiKawasaki/2022-simulation-training/Lecture4 におきました．<br>
 5/8: 第5回講義で用いるサンプルプログラム等を 
-TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．
-
+TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．<br>
 5/15: 第6回講義で用いるサンプルプログラム等を 
-TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．
-
-5/22: 休講
+TakeshiKawasaki/2022-simulation-training/Lecture5 におきました．<br>
+5/22: 休講<br>
