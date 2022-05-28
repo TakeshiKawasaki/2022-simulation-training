@@ -1,3 +1,6 @@
+**langevin_many.cpp:**<br>
+自主課題6の主計算サンプルプログラム<br>
+
 **many_particle.py:**<br>
 自主課題６の作図サンプルプログラム<br>
 ４枚の粒子図を並べる．<br>
@@ -9,3 +12,5 @@
 平衡化はlangevinダイナミクス<br>
 本計算は速度ベルレ法
 
+**energy.py:**<br>
+md.cppの結果の作図（力学的エネルギー等）
