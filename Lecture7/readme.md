@@ -1,4 +1,4 @@
-**many_particle.py:**
+**many_particle.py:**<br>
 ４枚の粒子図を並べる．<br>
 これを形成するためには，温度T=0.2,0.4,0.6,1.0の粒子の配置データが必要．<br>
 粒子の配置データはlangevin_many.cppで生成(tempを手動で変える)．<br>
