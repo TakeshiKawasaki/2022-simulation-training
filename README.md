@@ -12,7 +12,7 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 04/11：第1回講義で用いるサンプルプログラム等を
 Lecture1におきました．講義が進むにつれデータをアップデートさせます．<br>
 04/18：第2回講義で用いるサンプルプログラム等をLecture2
-におきました．今回はjupyiter notebookファイルも掲載しました．<br>
+におきました．今回はjupyter notebookファイルも掲載しました．<br>
 04/25：第3回講義で用いるサンプルプログラム等をLecture3 におきました．<br>
 05/01：第4回講義で用いるサンプルプログラム等をLecture4 におきました．<br>
 05/08：第5回講義で用いるサンプルプログラム等をLecture5 におきました．<br>
