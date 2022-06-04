@@ -1,3 +1,7 @@
+## 第７回講義動画 <br>
+https://nuss.nagoya-u.ac.jp/s/KjMwsZbPzZNyHA2
+
+## 各種プログラムの説明　<br>
 **langevin_many.cpp:**<br>
 自主課題6の主計算サンプルプログラム<br>
 
