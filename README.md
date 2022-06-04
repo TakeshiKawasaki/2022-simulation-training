@@ -8,7 +8,7 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 ```
 を実行すると　新たに生成されるフォルダCodes以下に当リポジトリ内の全てのデータが入ります．
 
-**(更新履歴)**<br>
+## (更新履歴) <br>
 04/11：第1回講義で用いるサンプルプログラム等をLecture1におきました．講義が進むにつれデータをアップデートさせます．<br>
 04/18：第2回講義で用いるサンプルプログラム等をLecture2におきました．今回はjupyter notebookファイルも掲載しました．<br>
 04/25：第3回講義で用いるサンプルプログラム等をLecture3におきました．<br>
