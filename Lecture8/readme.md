@@ -1,1 +1,1 @@
-** Moarkov chain Monte-Calro simuations **<br>
+**Moarkov chain Monte-Calro simuations**<br>
