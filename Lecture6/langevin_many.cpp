@@ -18,15 +18,16 @@ void ini_coord_square(double (*x)[dim]){
   int num_x = (int)sqrt(Np)+1;
   int num_y = (int)sqrt(Np)+1;
   int i,j,k=0;
-  double shift;
   for(j=0;j<num_y;j++){
     for(i=0;i<num_x;i++){
       x[i+num_x*j][0] = i*L/(double)num_x;
       x[i+num_x*j][1] = j*L/(double)num_y;
       k++;
-      if(k==Np)
+      if(k>=Np)
         break;
     }
+    if(k>=Np)
+      break;
   }
 }
 
