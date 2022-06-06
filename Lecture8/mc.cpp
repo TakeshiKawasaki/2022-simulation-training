@@ -118,7 +118,7 @@ int main(){
   ini_coord_square(x);
   ini_energy(x,a,&U);
    
-  while(j < 100*Np){
+  while(j < 1000*Np){
     j++;
     mc(x,a,&U,5.0,&count);
   }
