@@ -50,34 +50,32 @@ void ini_array(double (*x)[dim]){
       x[i][j]=0.0;
 }
 
-void calc_energy(double (*x)[dim],double *a,double *U,int i){
+void calc_energy(double (*x)[dim],double *a,double *U){
   double dx,dy,dr2,w2,w6,w12,aij;
   //  double Ucut=4.*(pow(cut,-12)-pow(cut,-6));
 
-  U[i]=0;
-  for(int j=0;j<Np;j++){
-    if(j!=i){
-      dx=x[i][0]-x[j][0];
-      dy=x[i][1]-x[j][1];
-      dx-=L*floor((dx+0.5*L)/L);
-      dy-=L*floor((dy+0.5*L)/L);
-      dr2=dx*dx+dy*dy;
-      if(dr2<cut*cut){
-	aij=0.5*(a[i]+a[j]);
-	w2=aij*aij/dr2;
-	w6=w2*w2*w2;
-	w12=w6*w6;  
-	U[i]+=4.*(w12-w6);
+  *U=0.;
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<Np;j++){
+      if(j<i){
+	dx=x[i][0]-x[j][0];
+	dy=x[i][1]-x[j][1];
+	dx-=L*floor((dx+0.5*L)/L);
+	dy-=L*floor((dy+0.5*L)/L);
+	dr2=dx*dx+dy*dy;
+	if(dr2<cut*cut){
+	  aij=0.5*(a[i]+a[j]);
+	  w2=aij*aij/dr2;
+	  w6=w2*w2*w2;
+	  w12=w6*w6;  
+	  *U+=4.*(w12-w6);
+	}
       }
     }
-  }
 }
 
 void ini_energy(double (*x)[dim],double *a,double *U){
-  for(int i=0;i<Np;i++){
-    calc_energy(x,a,U,i);
-    std::cout<<U[i]<<std::endl;
-  }
+  calc_energy(x,a,&(*U));
 }
 
 void mc(double (*x)[dim],double *a,double *U,double temp0,int *count){
@@ -85,20 +83,18 @@ void mc(double (*x)[dim],double *a,double *U,double temp0,int *count){
   double U0;
   double p;
   int  i = (int)(Np*unif_rand(0,1.0));
-  U0=U[i];
+  U0=*U;
   for(int k=0;k<dim;k++){
     dr[k]=delta*unif_rand(-1.0,1.0);
     x[i][k]+=dr[k];
   }
-  calc_energy(x,a,U,i);
+  calc_energy(x,a,&(*U));
   p=unif_rand(0,1.0);
-  //  std::cout<<p<<" "<<1./exp((U[i]-U0)/temp0)<<std::endl;
-  if(p > 1./exp((U[i]-U0)/temp0)){
+  if(p > 1./exp((*U-U0)/temp0)){
     *count+=1;
-    // std::cout<<"reject"<<std::endl;
     for(int k=0;k<dim;k++)
       x[i][k]-=dr[k];
-    U[i]=U0;
+    *U=U0;
   }
   p_boundary(x,i);
 }
@@ -116,21 +112,21 @@ void output(double (*x)[dim],double *a){
 }
 
 int main(){
-  double x[Np][dim],U[Np],a[Np];
+  double x[Np][dim],U,a[Np];
   int j=0,out=0,count=0;
   set_diameter(a);
   ini_coord_square(x);
-  ini_energy(x,a,U);
+  ini_energy(x,a,&U);
    
-  while(j < 1000*Np){
+  while(j < 100*Np){
     j++;
-    mc(x,a,U,5.0,&count);
+    mc(x,a,&U,5.0,&count);
   }
   j=0;
   count=0;
   while(j < mcstep_max*Np){
     j++;
-    mc(x,a,U,temp,&count);
+    mc(x,a,&U,temp,&count);
     if(j>out){
       output(x,a);
       out+=1000*Np;   
