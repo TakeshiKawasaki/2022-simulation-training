@@ -1,3 +1,6 @@
+#第８回講義動画
+https://nuss.nagoya-u.ac.jp/s/ZiiZmpYBEfR5NAc
+
 **Moarkov chain Monte-Calro simulations**<br>
 
 mc.cpp: The main calculation code for Moarkov chain Monte-Calro simulations, which refers to "BM.h".<br>
