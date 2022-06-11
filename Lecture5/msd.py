@@ -10,7 +10,6 @@ plt.rcParams["text.usetex"] =True
 fig = plt.figure(figsize=(12,8))
 temp=[0.01,0.1,1]
 
-plt.subplot(111)
 ax1 = fig.add_subplot(111)
 for i in range(0,3):
     t,msd= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture5/msd_dt0.010T{:.3f}.dat".format(temp[i]), comments='#', unpack=True)
