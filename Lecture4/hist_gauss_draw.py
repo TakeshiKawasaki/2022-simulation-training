@@ -9,7 +9,6 @@ import math
 plt.rcParams["text.usetex"] =True 
 fig = plt.figure(figsize=(8,8))
 
-plt.subplot(111)
 ax1 = fig.add_subplot(111)
 x,hist= np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture4/hist_gauss.dat", comments='#', unpack=True)
 plt.plot(x,hist, "-o" ,markersize=3,color=cm.jet(3/4),label=r"$P(X)$")
