@@ -3,4 +3,5 @@ Verlet帳簿法<br>
 帳簿自動更新<br>
 
 **md_list.cpp** <br>
-Lecture7のmd.cppを高速化したもの
+Lecture7のmd.cppを高速化したもの <br>
+bm.hをincludeする必要がある
