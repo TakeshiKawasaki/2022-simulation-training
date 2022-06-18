@@ -4,4 +4,4 @@ Verlet帳簿法<br>
 
 **md_list.cpp** <br>
 Lecture7のmd.cppを高速化したもの <br>
-bm.hをincludeする必要がある
+BM.hをincludeする必要がある
