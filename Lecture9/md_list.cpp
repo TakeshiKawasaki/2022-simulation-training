@@ -170,22 +170,23 @@ void calc_disp_max(double *disp_max,double (*x)[dim],double (*x_update)[dim])
   }
 }
 
-void auto_list_update(double *disp_max,double (*x)[dim],double (*x_update)[dim],int (*list)[Nn],int *count){
+void auto_list_update(double *disp_max,double (*x)[dim],double (*x_update)[dim],int (*list)[Nn]){
+  static int count=0;
+  count++;
   calc_disp_max(&(*disp_max),x,x_update);
-  *count+=1;
   if(*disp_max > skin*skin*0.25){
     list_verlet(list,x);
     update(x_update,x);
-    //    std::cout<<"update"<<*disp_max<<" "<<*count<<std::endl;
+    //    std::cout<<"update"<<*disp_max<<" "<<count<<std::endl;
     *disp_max=0.0;
-    *count=0;
+    count=0;
   }
 }
 
 
 int main(){
   double x[Np][dim],x_update[Np][dim],v[Np][dim],f[Np][dim],a[Np];
-  int list[Np][Nn],count=0;
+  int list[Np][Nn];
   double tout=0.0,U,disp_max=0.0;
   int j=0;
   set_diameter(a);
@@ -194,20 +195,20 @@ int main(){
   
   while(j*dtbd < 10.){
     j++;
-    auto_list_update(&disp_max,x,x_update,list,&count);
+    auto_list_update(&disp_max,x,x_update,list);
     eom_langevin(v,x,f,a,&U,dtbd,5.0,list);
   }
   
   j=0;
   while(j*dtbd < teq){
     j++;
-    auto_list_update(&disp_max,x,x_update,list,&count);
+    auto_list_update(&disp_max,x,x_update,list);
     eom_langevin(v,x,f,a,&U,dtbd,temp,list);
   }
   j=0;
   while(j*dtmd < tmax){
     j++;
-    auto_list_update(&disp_max,x,x_update,list,&count);
+    auto_list_update(&disp_max,x,x_update,list);
     eom_md(v,x,f,a,&U,dtmd,list);
     if(j*dtmd >= tout){
       output(j,v,U);
