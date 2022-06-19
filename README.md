@@ -19,5 +19,5 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 05/29：第7回講義で用いるサンプルプログラム等をLecture7におきました．<br>
 06/04：第8回講義で用いるサンプルプログラム等をLecture8におきました．<br>
 06/04：中間課題解答例等をMidterm_examにおきました．<br>
-06/13：期末課題をFinal_examに公開しました．
+06/13：期末課題をFinal_examに公開しました．<br>
 06/20:第９回（補講）で用いるサンプルプログラム等をLecture9におきました．<br>
