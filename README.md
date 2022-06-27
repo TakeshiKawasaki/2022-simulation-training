@@ -2,7 +2,7 @@
 2022年度シミュレーション実習におけるサンプルプログラムや講義資料をここに置きます．
 ”Code”（緑色のボタン）を押し，zip形式など適宜形式を選びダウンロードして下さい．
 
-また端末で
+またGitをインストールいただければご自身のコンピュータの端末で
 ```
 git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 ```
@@ -21,3 +21,4 @@ git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
 06/04：中間課題解答例等をMidterm_examにおきました．<br>
 06/13：期末課題をFinal_examに公開しました．<br>
 06/20:第９回（補講）で用いるサンプルプログラム等をLecture9におきました．<br>
+06/27:Git講習会（補講）講演動画・講義資料をGit_seminarに置きました．<br>
