@@ -1,4 +1,17 @@
 ## 2022-simulation-training:<br>名古屋大学大学院理学研究科　データサイエンス科目群：<br>シミュレーション実習（2022年度）
+
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+
 2022年度シミュレーション実習におけるサンプルプログラムや講義資料をここに置きます．
 ”Code”（緑色のボタン）を押し，zip形式など適宜形式を選びダウンロードして下さい．
 
