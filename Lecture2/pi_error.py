@@ -38,7 +38,6 @@ plt.legend(ncol=1, loc=4, borderaxespad=0, fontsize=25,frameon=False)
 #################################
 
  ###########################
-plt.subplot(222)
 ax2 = fig.add_subplot(222)
 #各自ファイルのパスを変えること
 i, pi,error  = np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture2/pi-error.dat", comments='#', unpack=True)
@@ -69,7 +68,7 @@ plt.legend(ncol=1, loc=1, borderaxespad=0, fontsize=25,frameon=False)
 #################################
 
  ###########################
-plt.subplot(223)
+
 ax3 = fig.add_subplot(223)
 #各自ファイルのパスを変えること
 i, pi,error  = np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture2/pi-error-MT.dat", comments='#', unpack=True)
@@ -97,7 +96,7 @@ plt.legend(ncol=1, loc=4, borderaxespad=0, fontsize=25,frameon=False)
 #################################
 
 ###########################
-plt.subplot(224)
+
 ax4 = fig.add_subplot(224)
 #各自ファイルのパスを変えること
 i, pi,error  = np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture2/pi-error-MT.dat", comments='#', unpack=True)
