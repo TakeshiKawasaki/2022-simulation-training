@@ -11,7 +11,6 @@ fig = plt.figure(figsize=(18,12))
 #複数の図を並べる時ここを変える
 
  ###########################
-plt.subplot(221)
 ax1 = fig.add_subplot(221)
 #各自ファイルのパスを変えること
 i, pi,error  = np.loadtxt("./Documents/GitHub/2022-simulation-training-main/Lecture2/pi-error.dat", comments='#', unpack=True)
