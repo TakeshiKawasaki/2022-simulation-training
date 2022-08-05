@@ -14,7 +14,7 @@ This work is licensed under a
 
 またGitをインストールいただければご自身のコンピュータの端末で
 ```
-git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git Codes
+git clone https://github.com/TakeshiKawasaki/2022-simulation-training.git 
 ```
 を実行すると　新たに生成されるフォルダCodes以下に当リポジトリ内の全てのデータが入ります．
 
