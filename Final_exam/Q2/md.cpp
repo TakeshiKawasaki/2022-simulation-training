@@ -1,0 +1,196 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <cfloat>
+#include "BM.h"
+
+#define Np 1000
+#define L 50.0
+#define teq 1500
+#define tmax 100
+#define dtmd 0.001
+#define dtbd 0.01
+#define temp 0.2
+#define dim 2
+#define cut 2.0
+#define polydispersity 0.0
+#define hist_size 1000
+#define hist_width 0.01
+
+void ini_coord_square(double (*x)[dim]){
+  int num_x = (int)sqrt(Np)+1;
+  int num_y = (int)sqrt(Np)+1;
+  int i,j,k=0;
+  for(j=0;j<num_y;j++){
+    for(i=0;i<num_x;i++){
+      x[i+num_x*j][0] = i*L/(double)num_x;
+      x[i+num_x*j][1] = j*L/(double)num_y;
+      k++;
+      if(k>=Np)
+        break;
+    }
+    if(k>=Np)
+      break;
+  }
+}
+
+void set_diameter(double *a){
+  for(int i=0;i<Np;i++)
+    a[i]=1.0+polydispersity*gaussian_rand();
+}
+
+void p_boundary(double (*x)[dim]){
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++)
+      x[i][j]-=L*floor(x[i][j]/L);
+}
+
+void ini_array(double (*x)[dim]){
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++)
+      x[i][j]=0.0;
+}
+
+void ini_vector(double *x){
+  for(int i=0;i<Np;i++)
+       x[i]=0.0;
+}
+
+void calc_force(double (*x)[dim],double (*f)[dim],double *a,double *U){
+  double dx,dy,dr2,dr,dUr,w2,w6,w12,aij,dUrcut,Ucut;
+  ini_array(f);
+  *U=0;
+  dUrcut = -48*pow(cut,-13)+24*pow(cut,-7);
+  Ucut= 4.*pow(cut,-12)-4.*pow(cut,-6);
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<Np;j++){
+      if(i<j){
+	dx=x[i][0]-x[j][0];
+	dy=x[i][1]-x[j][1];
+	dx-=L*floor((dx+0.5*L)/L);
+	dy-=L*floor((dy+0.5*L)/L);
+	dr2=dx*dx+dy*dy;
+	if(dr2<cut*cut){
+	  dr=sqrt(dr2);
+	  aij=0.5*(a[i]+a[j]);
+	  w2=aij*aij/dr2;
+	  w6=w2*w2*w2;
+	  w12=w6*w6;  
+	  dUr=(-48.*w12+24*w6)/dr2-dUrcut/dr;
+	  f[i][0]-=dUr*dx;
+	  f[j][0]+=dUr*dx;
+	  f[i][1]-=dUr*dy;
+	  f[j][1]+=dUr*dy;
+	  *U+=4.*w12-4.*w6-Ucut-dUrcut*(dr-cut);
+	}
+      }
+    }
+}
+
+void eom_langevin(double (*v)[dim],double (*x)[dim],double (*f)[dim],double *a,double *U,double dt,double temp0){
+  double zeta=1.0;
+  double fluc=sqrt(2.*zeta*temp0*dt);
+
+  calc_force(x,f,a,&(*U));
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++){
+      v[i][j]+=-zeta*v[i][j]*dt+f[i][j]*dt+fluc*gaussian_rand();
+      x[i][j]+=v[i][j]*dt;
+    }
+  p_boundary(x);
+}
+
+void eom_md(double (*v)[dim],double (*x)[dim],double (*f)[dim],double *a,double *U,double dt){
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++){
+      x[i][j]+=v[i][j]*dt+0.5*f[i][j]*dt*dt;
+      v[i][j]+=0.5*f[i][j]*dt;
+    }
+  calc_force(x,f,a,&(*U));
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++){
+      v[i][j]+=0.5*f[i][j]*dt;
+    }
+  p_boundary(x);
+}
+void histogram(double (*v)[dim],double *h){
+  for(int i=0;i<Np;i++)
+    h[(int)floor(v[i][0]/hist_width)+(int)hist_size/2]+=1.0/hist_width/Np/tmax;
+}
+
+void output(int k,double (*v)[dim],double U){
+  char filename[128];
+  double K=0.0;
+
+  std::ofstream file;
+  sprintf(filename,"energy.dat");
+  file.open(filename,std::ios::app); //append
+  for(int i=0;i<Np;i++)
+    for(int j=0;j<dim;j++)
+      K+=0.5*v[i][j]*v[i][j];
+  
+  std::cout<< std::setprecision(6)<<k*dtmd<<"\t"<<K/Np<<"\t"<<U/Np<<"\t"<<(K+U)/Np<<std::endl;  
+  file<< std::setprecision(6)<<k*dtmd<<"\t"<<K/Np<<"\t"<<U/Np<<"\t"<<(K+U)/Np<<std::endl;
+  file.close();
+}
+
+void output_coord(double (*x)[dim],double *a,double temp0){
+  char filename[128];
+  std::ofstream file;
+  sprintf(filename,"coord_T%.3f.dat",temp0);
+  file.open(filename);
+  for(int i=0;i<Np;i++)
+    file <<x[i][0]<<"\t"<<x[i][1]<<"\t"<<a[i]<<std::endl;
+  file.close();
+}
+
+
+void output_histogram(double *h){
+  char filename[128];
+
+  std::ofstream file;
+  sprintf(filename,"histogram.dat");
+  file.open(filename);
+  for(int i=0;i<hist_size;i++)
+    file<<hist_width*(i-hist_size/2)<<"\t"<<h[i]<<std::endl;
+  file.close();
+}
+
+
+int main(){
+  double x[Np][dim],v[Np][dim],f[Np][dim],a[Np],h[hist_size];
+  double tout=0.0,U;
+  int j=0;
+  set_diameter(a);
+  ini_coord_square(x);
+  ini_array(v);
+  ini_vector(h);
+  
+  
+  while(j*dtbd < 100.){
+    j++;
+    eom_langevin(v,x,f,a,&U,dtbd,5.0);
+  }
+  output_coord(x,a,5.0);  
+  j=0;
+  while(j*dtbd < teq){
+    j++;
+    eom_langevin(v,x,f,a,&U,dtbd,temp);
+  }
+  output_coord(x,a,temp);
+  j=0;
+  while(j*dtmd < tmax){
+    j++;
+    eom_md(v,x,f,a,&U,dtmd);
+    if(j*dtmd >= tout){
+      output(j,v,U);
+      tout+=1.;
+      histogram(v,h);
+    }
+  }
+  output_histogram(h);
+  return 0;
+}
